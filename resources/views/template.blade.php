@@ -12,24 +12,7 @@
 </head>
 <body>
 
-    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Bottom navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('blog')}}">Blog</a>
-              </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -41,7 +24,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     -->
+<p>
+     <a href="{{ route('home') }}">Home</a>
+     <a href="{{ route('blog') }}">Blog</a>
+     @auth
+         <a href="{{ route('dashboard') }}">Dashboard</a>
 
+     @else
+         <a href="{{ route('login') }}">login</a>
+
+     @endauth
+
+</p>
 @yield('content')
 </body>
 </html>
