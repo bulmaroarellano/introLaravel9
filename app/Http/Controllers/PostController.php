@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.index', ['posts' => Post::latest()->paginate()]);
     }
 
     /**
@@ -81,6 +81,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return back();
     }
 }
