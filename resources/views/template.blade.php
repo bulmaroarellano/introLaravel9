@@ -6,36 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
     <title>Home</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body>
+    <div class="container px-4 mx-auto">
+        <header class="flex justify-between items-center py-4">
+            <div class="flex items-center flex-grow gap-4">
+                <a href="{{ route('home') }}">
+                    <img class="h-12" src="{{ asset('images/logo.png') }}" alt="Logo" />
+                </a>
+                <form action=""  class="flex-grow" method="get">
+                    {!! Form::text($name="search", $value="", ['placeholder'=>'Search', 'class'=>'class="border border-gray-200 rounded py-2 px-4 w-1/2"']) !!}
+                </form>
+            </div>
+            @auth
+            <a href="{{ route('dashboard') }}">Dashboard</a>
 
+        @else
+            <a href="{{ route('login') }}">login</a>
 
+        @endauth
 
-    <!-- Optional JavaScript; choose one of the two! -->
+        </header>
+        <div class="opacity-60 h-px mb-8" style="background: linear-gradient(to right,
+             rgba(200, 200, 200, 0) 0%,
+            rgba(200, 200, 200, 1) 30%,
+            rgba(200, 200, 200, 1) 70%,
+            rgba(200, 200, 200, 0) 100%
+            );
+        ">
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        </div>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
-<p>
-     <a href="{{ route('home') }}">Home</a>
-     <a href="{{ route('blog') }}">Blog</a>
-     @auth
-         <a href="{{ route('dashboard') }}">Dashboard</a>
-
-     @else
-         <a href="{{ route('login') }}">login</a>
-
-     @endauth
-
-</p>
 @yield('content')
+
+<p class="py-16">
+    <img src="{{ asset('images/logo.png') }}" class="h-12 mx-auto">
+</p>
+</div>
 </body>
 </html>
